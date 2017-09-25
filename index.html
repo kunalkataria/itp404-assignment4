@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Simple Map</title>
-    <meta name="viewport" content="initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
     <meta charset="utf-8">
   </head>
   <body>
@@ -10,17 +10,26 @@
     <input id='search-input' placeholder="github username...">
     <button id='search-button'>Search</button>
 
-    <div id="searches"></div>
+    <div id="search-history"></div>
 
-    <template id="search-template">
-      <div class="search-term">
-        <p>{{term}}</p>
-        <p>{{createdAt}}</p>
+    <!-- <template id="repos-template">
+      <div class="repo-result">
+        <p>
+        </p>
       </div>
+    </template> -->
+
+    <template id="searches-template">
+      {{#each searches}}
+        <div class="search-term">
+          <p>{{term}}</p>
+          <p>{{createdAt}}</p>
+        </div>
+      {{/each}}
     </template>
 
-    <script src="src/jquery-3.2.1.js"/>
-    <script src="src/handlebars-v4.0.10.js"/>
-    <script src="src/main.js"/>
+    <script src="src/jquery-3.2.1.js"></script>
+    <script src="src/handlebars-v4.0.10.js"></script>
+    <script src="src/main.js"></script>
   </body>
 </html>
