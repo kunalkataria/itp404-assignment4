@@ -7,17 +7,30 @@
   </head>
   <body>
     <h2>Search for a user's github repos:</h2>
-    <input id='search-input' placeholder="github username...">
-    <button id='search-button'>Search</button>
+    <div id="search-box">
+      <input id='search-input' placeholder="github username...">
+      <button id='search-button'>Search</button>
+    </div>
 
-    <div id="search-history"></div>
+    <div id="repo-result-section">
+      <h2>Results: </h2>
+      <div id="repos"></div>
+    </div>
 
-    <!-- <template id="repos-template">
-      <div class="repo-result">
-        <p>
-        </p>
-      </div>
-    </template> -->
+    <div id="search-history-section">
+      <h2>Search History:</h2>
+        <div id="search-history"></div>
+    </div>
+
+    <template id="repos-template">
+      {{#each repos}}
+        <div class="repo-result">
+          <a href="{{html_url}}">
+            {{name}}
+          </a>
+        </div>
+      {{/each}}
+    </template>
 
     <template id="searches-template">
       {{#each searches}}

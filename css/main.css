@@ -1,4 +1,29 @@
-#search-history {
+body {
+  background-color: #e3f2fd;
+}
+
+#search-history-section {
+  background-color: white;
+  border-left: 1px solid;
+  border-right: 1px solid;
+  height: 800px;
   float: right;
+  overflow-y: scroll;
+  padding: 0px 12px 0px 12px;
   margin-right: 48px;
+  width: 200px;
+}
+
+.repo-result {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+#repo-result-section {
+  float: left;
+  clear: both;
+}
+
+#search-box {
+  clear: left;
 }

@@ -5,20 +5,21 @@ function fetchReposForUsername(username) {
 var searchTemplate = $('#searches-template').html();
 var renderSearches = Handlebars.compile(searchTemplate);
 
-// var repoTemplate = $('#repos-template').html();
-// var renderRepos = Handlebars.compile(repoTemplate);
+var repoTemplate = $('#repos-template').html();
+var renderRepos = Handlebars.compile(repoTemplate);
 
 let searches = [];
+
+$('#repo-result-section').hide();
 
 $.ajax({
   type: 'GET',
   url: 'http://localhost:3000/api/searches'
 }).then(function(response) {
+  searches = response.reverse();
   $('#search-history').append(renderSearches({
-    searches: response
+    searches: searches
   }));
-  searches = response;
-  console.log(response);
 });
 
 $('#search-button').on('click', function() {
@@ -32,12 +33,18 @@ $('#search-button').on('click', function() {
       createdAt: new Date()
     }
   }).then(function(response) {
-    searches.push(response);
-
+    searches.unshift(response);
+    $('#search-history').html(renderSearches({
+      searches: searches
+    }));
   });
 
   fetchReposForUsername(username).then(function(response) {
-    console.log(response);
+    var html = renderRepos({
+      repos: response
+    });
+    $('#repo-result-section').show();
+    $('#repos').html(html);
   }, function() {
 
   });
