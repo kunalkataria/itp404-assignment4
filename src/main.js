@@ -23,6 +23,7 @@ $.ajax({
 });
 
 $('#search-button').on('click', function() {
+  $('#repo-result-section').hide();
   var username = $('#search-input').val();
 
   $.ajax({
